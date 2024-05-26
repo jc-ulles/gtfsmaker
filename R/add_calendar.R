@@ -29,7 +29,7 @@ add_calendar <- function(service_id, monday, tuesday, wednesday, thursday, frida
   }
 
   if (any(!c(monday, tuesday, wednesday, thursday, friday, saturday, sunday) %in% c(0, 1))) {
-    stop("Erreur: Les valeurs des jours doivent être 0 ou 1.")
+    stop("Erreur: Les valeurs des jours doivent etre 0 ou 1.")
   }
 
   new_row <- data.frame(service_id = service_id,

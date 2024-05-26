@@ -30,7 +30,7 @@ add_stop_times <- function(trip_id_v, time, stop_id, stop_sequence) {
 
   if_test <- subset(stop_times, trip_id == trip_id_v)
   if (stop_sequence %in% if_test$stop_sequence) {
-    message("Erreur: stop_sequence '", stop_sequence, "' existe déjà dans stop_times$stop_sequence")
+    message("Erreur: stop_sequence '", stop_sequence, "' existe deja dans stop_times$stop_sequence")
     return(invisible())
   }
 

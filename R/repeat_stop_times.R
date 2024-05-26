@@ -26,7 +26,7 @@ repeat_stop_times <- function(trip_id_n, horaire, temps) {
   horaire <- as.POSIXct(horaire, format = "%H:%M:%S")
 
   if(horaire < (nouveau_df$arrival_time + (temps*60))) {
-    return("Horaire maximal inférieur ou égal à l'horaire de référence")
+    return("Horaire maximal inferieur ou egal a l'horaire de reference")
   }
 
   horaires <- seq(from = nouveau_df$arrival_time,

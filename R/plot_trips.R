@@ -47,7 +47,7 @@ plot_trips <- function(service_id_v) {
     p <- p + geom_line(data = trip_data, aes(x = arrival_time, y = factor(stop_name, levels = unique(stop_name)), group = 1))
   }
 
-  p <- p + labs(x = "Temps", y = "Arrêts de transport", title = "Horaire d'arrivée des transports par arrêt")
+  p <- p + labs(x = "Temps", y = "Arrets de transport", title = "Horaire d'arrivee des transports par arret")
 
   return(p)
 }
