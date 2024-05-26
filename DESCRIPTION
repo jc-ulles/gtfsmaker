@@ -1,0 +1,12 @@
+Package: gtfsmaker
+Title: Creating and editing GTFS file
+Version: 0.1
+Authors@R: 
+    person("Jean-Clement", "Ullès", , "jean-clement.ulles@univ-montp3.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+Imports: ggplot2
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
