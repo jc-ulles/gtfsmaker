@@ -33,8 +33,6 @@ An example of creating a GTFS from fictitious data:
 
 ``` r
 library(gtfsmaker)
-library(ggplot2)
-#> Warning: le package 'ggplot2' a été compilé avec la version R 4.2.3
 
 # Create all the files needed in the R environment
 gtfs_files()
