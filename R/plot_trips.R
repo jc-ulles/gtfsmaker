@@ -7,7 +7,8 @@
 #' @return Create a graph of the transport offer
 #' @export
 #'
-#' @importFrom ggplot2 ggplot theme_minimal scale_x_datetime geom_point geom_line labs
+#' @importFrom ggplot2 ggplot theme_minimal scale_x_datetime geom_point geom_line labs aes theme
+#' @importFrom dplyr filter select slice summarize
 #'
 #' @examples
 #' plot_trips(1)
@@ -16,6 +17,7 @@ plot_trips <- function(service_id_v) {
   trips <- as.data.frame(globalenv()$trips)
   stops <- as.data.frame(globalenv()$stops)
   stop_times <- as.data.frame(globalenv()$stop_times)
+  routes <- as.data.frame(globalenv()$routes)
 
   if (!("stop_id" %in% colnames(stop_times))) {
     return("fin")
@@ -34,9 +36,37 @@ plot_trips <- function(service_id_v) {
 
   jointure <- subset(jointure, service_id == service_id_v)
 
+  trips <- merge(trips, routes, by = "route_id")
+
+  result <- trips %>%
+    filter(service_id == service_id_v) %>%
+    select(route_long_name) %>%
+    slice(1)
+
   unique_trip_ids <- unique(jointure$trip_id)
 
-  p <- ggplot() + theme_minimal() + scale_x_datetime(date_breaks = "1 hour", date_labels = "%H:%M")
+  time_range <- stop_times %>%
+    summarize(min_time = min(departure_time, na.rm = TRUE),
+              max_time = max(departure_time, na.rm = TRUE))
+
+  time_difference <- difftime(time_range$max_time, time_range$min_time, units = "mins")
+
+  if (time_difference < 60) {
+    temps_plot <- "10 mins"
+  }
+
+  if (time_difference >= 60 & time_difference <= 480) {
+    temps_plot <- "30 mins"
+  }
+
+  if (time_difference > 480) {
+    temps_plot <- "1 hour"
+  }
+
+
+  p <- ggplot() +
+    theme_minimal() +
+    scale_x_datetime(date_breaks = temps_plot, date_labels = "%H:%M")
 
   for (i in 1:length(unique_trip_ids)) {
 
@@ -47,7 +77,11 @@ plot_trips <- function(service_id_v) {
     p <- p + geom_line(data = trip_data, aes(x = arrival_time, y = factor(stop_name, levels = unique(stop_name)), group = 1))
   }
 
-  p <- p + labs(x = "Temps", y = "Arrets de transport", title = "Horaire d'arrivee des transports par arret")
+  p <- p +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank()) +
+    labs(title = "Plot of the transport offer",
+         subtitle = paste("Route", result$route_long_name))
 
   return(p)
 }
