@@ -41,10 +41,11 @@ An example of creating a GTFS from fictitious data:
 
 ```{r, include = FALSE}
 library(ggplot2)
+library(dplyr)
 ```
 
 ```{r example}
-library(gtfsmaker)
+library(gtfsmaker )
 
 # Create all the files needed in the R environment
 gtfs_files()

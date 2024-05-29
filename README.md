@@ -32,7 +32,7 @@ devtools::install_github("jc-ulles/gtfsmaker")
 An example of creating a GTFS from fictitious data:
 
 ``` r
-library(gtfsmaker)
+library(gtfsmaker )
 
 # Create all the files needed in the R environment
 gtfs_files()
