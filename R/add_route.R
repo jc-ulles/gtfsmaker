@@ -3,8 +3,8 @@
 #'
 #' @description Add a new route
 #'
-#' @param route_long_name name of the route
-#' @param route_type type of transportation used on a route:
+#' @param name name of the route
+#' @param type type of transportation used on a route:
 #' * `0`: Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area
 #' * `1`: Subway, Metro. Any underground rail system within a metropolitan area
 #' * `2`: Rail. Used for intercity or long-distance travel
@@ -21,7 +21,7 @@
 #'
 #' @examples
 #' add_route("Montcalm - Lunaret", 0)
-add_route <- function(route_long_name, route_type) {
+add_route <- function(name, type) {
 
   routes <- as.data.frame(globalenv()$routes)
 
@@ -32,8 +32,8 @@ add_route <- function(route_long_name, route_type) {
   }
 
   new_row <- data.frame(route_id = new_route_id,
-                        route_long_name = route_long_name,
-                        route_type = route_type
+                        route_long_name = name,
+                        route_type = type
                         )
 
   routes <<- rbind(routes, new_row)

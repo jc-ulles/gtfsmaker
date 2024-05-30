@@ -4,7 +4,7 @@
 \alias{add_stop_times}
 \title{Add trip information to the GTFS}
 \usage{
-add_stop_times(trip_id, time, stop_id, stop_sequence)
+add_stop_times(trip_id, time, stop_id, sequence)
 }
 \arguments{
 \item{trip_id}{identification number of the trip concerned}
@@ -13,7 +13,7 @@ add_stop_times(trip_id, time, stop_id, stop_sequence)
 
 \item{stop_id}{identification number of the stop concerned}
 
-\item{stop_sequence}{stop order number for the trip concerned}
+\item{sequence}{stop order number for the trip concerned}
 }
 \value{
 Add a new row to the \code{stop_times} object.

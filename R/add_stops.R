@@ -2,16 +2,16 @@
 #'
 #' @description add a stop
 #'
-#' @param stop_lat latitude of the location
-#' @param stop_lon longitude of the location
-#' @param stop_name name of the stop
+#' @param lat latitude of the location
+#' @param lon longitude of the location
+#' @param name name of the stop
 #'
 #' @return Add a new row to the `stops` object.
 #' @export
 #'
 #' @examples
 #' add_stops(43.59608069974394, 3.8626826404232526, "Parc Montcalm")
-add_stops <- function(stop_lat, stop_lon, stop_name) {
+add_stops <- function(lat, lon, name) {
 
   stops <- as.data.frame(globalenv()$stops)
 
@@ -22,9 +22,9 @@ add_stops <- function(stop_lat, stop_lon, stop_name) {
     }
 
     new_row <- data.frame(stop_id = new_stop_id,
-                          stop_lat = stop_lat,
-                          stop_lon = stop_lon,
-                          stop_name = stop_name
+                          stop_lat = lat,
+                          stop_lon = lon,
+                          stop_name = name
                           )
 
     stops <<- rbind(stops, new_row)

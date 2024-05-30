@@ -4,12 +4,12 @@
 \alias{add_route}
 \title{Add a route to the GTFS}
 \usage{
-add_route(route_long_name, route_type)
+add_route(name, type)
 }
 \arguments{
-\item{route_long_name}{name of the route}
+\item{name}{name of the route}
 
-\item{route_type}{type of transportation used on a route:
+\item{type}{type of transportation used on a route:
 \itemize{
 \item \code{0}: Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area
 \item \code{1}: Subway, Metro. Any underground rail system within a metropolitan area

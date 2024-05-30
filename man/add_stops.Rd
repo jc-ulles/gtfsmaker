@@ -4,14 +4,14 @@
 \alias{add_stops}
 \title{Add a stop to the GTFS}
 \usage{
-add_stops(stop_lat, stop_lon, stop_name)
+add_stops(lat, lon, name)
 }
 \arguments{
-\item{stop_lat}{latitude of the location}
+\item{lat}{latitude of the location}
 
-\item{stop_lon}{longitude of the location}
+\item{lon}{longitude of the location}
 
-\item{stop_name}{name of the stop}
+\item{name}{name of the stop}
 }
 \value{
 Add a new row to the \code{stops} object.

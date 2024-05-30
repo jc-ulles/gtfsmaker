@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @importFrom ggplot2 ggplot theme_minimal scale_x_datetime geom_point geom_line labs aes theme element_blank
-#' @importFrom dplyr filter select slice summarize %>%
+#' @importFrom dplyr filter select slice summarize %>% pull arrange
 #'
 #' @examples
 #' plot_trips(1)
@@ -18,6 +18,8 @@ plot_trips <- function(service_id) {
   stops <- as.data.frame(globalenv()$stops)
   stop_times <- as.data.frame(globalenv()$stop_times)
   routes <- as.data.frame(globalenv()$routes)
+
+  service_number <- service_id
 
   if (!("stop_id" %in% colnames(stop_times))) {
     return("fin")
@@ -35,12 +37,12 @@ plot_trips <- function(service_id) {
   jointure <- merge(jointure, trips, by = "trip_id")
 
   jointure <- jointure %>%
-    filter(service_id == service_id)
+    filter(service_id == service_number)
 
   trips <- merge(trips, routes, by = "route_id")
 
   result <- trips %>%
-    filter(service_id == service_id) %>%
+    filter(service_id == service_number) %>%
     select(route_long_name) %>%
     slice(1)
 
@@ -69,16 +71,22 @@ plot_trips <- function(service_id) {
     theme_minimal() +
     scale_x_datetime(date_breaks = temps_plot, date_labels = "%H:%M")
 
+  stop_name_levels <- jointure %>%
+    arrange(stop_sequence) %>%
+    pull(stop_name) %>%
+    unique()
+
   for (i in 1:length(unique_trip_ids)) {
 
         trip_data <- subset(jointure, trip_id == unique_trip_ids[i])
 
-    p <- p + geom_point(data = trip_data, aes(x = arrival_time, y = factor(stop_name, levels = unique(stop_name)), group = 1))
+    p <- p + geom_point(data = trip_data, aes(x = arrival_time, y = stop_name, group = 1))
 
-    p <- p + geom_line(data = trip_data, aes(x = arrival_time, y = factor(stop_name, levels = unique(stop_name)), group = 1))
+    p <- p + geom_line(data = trip_data, aes(x = arrival_time, y = stop_name, group = 1))
   }
 
   p <- p +
+    scale_y_discrete(limits = stop_name_levels) +
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank()) +
     labs(title = "Plot of the transport offer",

@@ -4,14 +4,14 @@
 \alias{repeat_stop_times}
 \title{Repeat a trip sequence for other timetables}
 \usage{
-repeat_stop_times(trip_id_n, horaire, temps)
+repeat_stop_times(trip_id, max_time, breaks)
 }
 \arguments{
-\item{trip_id_n}{identification number of the trip concerned}
+\item{trip_id}{identification number of the trip concerned}
 
-\item{horaire}{The maximum time that must not be exceeded}
+\item{max_time}{The maximum time that must not be exceeded}
 
-\item{temps}{The number of minutes between two trips until the maximum time is reached}
+\item{breaks}{The number of minutes between two trips until the maximum time is reached}
 }
 \value{
 Add new rows to the \code{stop_times} object.

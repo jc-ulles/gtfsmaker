@@ -4,14 +4,14 @@
 \alias{add_agency}
 \title{Add a transit agency to the GTFS}
 \usage{
-add_agency(agency_name, agency_url, agency_timezone)
+add_agency(name, url, timezone)
 }
 \arguments{
-\item{agency_name}{Agency name}
+\item{name}{Agency name}
 
-\item{agency_url}{Agency URL link}
+\item{url}{Agency URL link}
 
-\item{agency_timezone}{Agency time zone}
+\item{timezone}{Agency time zone}
 }
 \value{
 Adds a new row to the \code{Agency} object corresponding to the new agency's information.
