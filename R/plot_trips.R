@@ -7,8 +7,8 @@
 #' @return Create a graph of the transport offer
 #' @export
 #'
-#' @importFrom ggplot2 ggplot theme_minimal scale_x_datetime geom_point geom_line labs aes theme
-#' @importFrom dplyr filter select slice summarize
+#' @importFrom ggplot2 ggplot theme_minimal scale_x_datetime geom_point geom_line labs aes theme element_blank
+#' @importFrom dplyr filter select slice summarize %>%
 #'
 #' @examples
 #' plot_trips(1)
