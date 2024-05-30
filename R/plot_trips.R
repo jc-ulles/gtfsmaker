@@ -2,7 +2,7 @@
 #'
 #' @description Plot transport offer
 #'
-#' @param service_id_v identification number of the service concerned
+#' @param service_id identification number of the service concerned
 #'
 #' @return Create a graph of the transport offer
 #' @export
@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' plot_trips(1)
-plot_trips <- function(service_id_v) {
+plot_trips <- function(service_id) {
 
   trips <- as.data.frame(globalenv()$trips)
   stops <- as.data.frame(globalenv()$stops)
@@ -34,12 +34,13 @@ plot_trips <- function(service_id_v) {
   jointure <- merge(stops, stop_times, by = "stop_id")
   jointure <- merge(jointure, trips, by = "trip_id")
 
-  jointure <- subset(jointure, service_id == service_id_v)
+  jointure <- jointure %>%
+    filter(service_id == service_id)
 
   trips <- merge(trips, routes, by = "route_id")
 
   result <- trips %>%
-    filter(service_id == service_id_v) %>%
+    filter(service_id == service_id) %>%
     select(route_long_name) %>%
     slice(1)
 

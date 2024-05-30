@@ -4,10 +4,10 @@
 \alias{add_stop_times}
 \title{Add trip information to the GTFS}
 \usage{
-add_stop_times(trip_id_v, time, stop_id, stop_sequence)
+add_stop_times(trip_id, time, stop_id, stop_sequence)
 }
 \arguments{
-\item{trip_id_v}{identification number of the trip concerned}
+\item{trip_id}{identification number of the trip concerned}
 
 \item{time}{time "HH:MM:SS" at the stop for the specific trip}
 

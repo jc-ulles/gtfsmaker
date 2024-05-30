@@ -4,10 +4,10 @@
 \alias{plot_trips}
 \title{Plot transport offer}
 \usage{
-plot_trips(service_id_v)
+plot_trips(service_id)
 }
 \arguments{
-\item{service_id_v}{identification number of the service concerned}
+\item{service_id}{identification number of the service concerned}
 }
 \value{
 Create a graph of the transport offer
