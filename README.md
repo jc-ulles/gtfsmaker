@@ -116,3 +116,9 @@ plot_trips(service_id = 1)
 ```
 
 <img src='man/figures/plot_example.png'/>
+
+Plot the leaflet map of a selected route:
+
+``` r
+plot_map(route_id = 1)
+```

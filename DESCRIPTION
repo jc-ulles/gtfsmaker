@@ -5,7 +5,7 @@ Authors@R:
     person("Jean-Clement", "Ullès", , "jean-clement.ulles@univ-montp3.fr", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
-Imports: ggplot2, dplyr
+Imports: ggplot2, dplyr, sf, leaflet
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
