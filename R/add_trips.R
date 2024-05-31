@@ -3,12 +3,13 @@
 #' @description add a trip
 #'
 #' @param route_id identification number of the route concerned
+#' @param service_id identification number of the service concerned
 #'
 #' @return Add a new row to the `trips` object.
 #' @export
 #'
 #' @examples
-#' add_trips(route_id = 1
+#' add_trips(route_id = 1,
 #'           service_id = 1)
 add_trips <- function(route_id,
                       service_id) {
