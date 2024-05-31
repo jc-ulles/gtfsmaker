@@ -2,8 +2,8 @@ Package: gtfsmaker
 Title: Creating and editing GTFS
 Version: 0.1
 Authors@R: 
-    person("Jean-Clement", "Ullès", , "jean-clement.ulles@univ-montp3.fr", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Jean-Clement", "Ullès", ,"jean-clement.ulles@univ-montp3.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0004-8393-7188"))
 Description: Create your own GTFS. This package aims to build a functional GTFS from scratch by adding your own transport offer data. The functions are designed to automate and simplify the process of adding data to the files that make up the GTFS.
 Imports: ggplot2, dplyr, sf, leaflet
 License: GPL-3
