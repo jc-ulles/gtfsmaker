@@ -1,4 +1,5 @@
 #' @title Create all files needed for GTFS
+#' @name gtfs_files
 #'
 #' @description Create all files needed for GTFS
 #'

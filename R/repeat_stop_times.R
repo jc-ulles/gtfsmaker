@@ -1,4 +1,5 @@
 #' @title Repeat a trip sequence for other timetables
+#' @name repeat_stop_times
 #'
 #' @description Repeat a sequence of journeys for other times according to a specific frequency
 #'

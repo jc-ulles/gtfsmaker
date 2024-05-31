@@ -13,6 +13,7 @@
 #' @param sunday Indicates whether the service operates every Sunday (0 if unavailable, 1 if available)
 #' @param start_date Start service day for the service interval
 #' @param end_date End service day for the service interval (this service day is included in the interval)
+#' @name add_calendar
 #'
 #' @return Add a new row to the \code{Calendar} object corresponding to the new calendar's information.
 #' @export

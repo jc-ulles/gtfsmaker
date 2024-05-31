@@ -1,4 +1,5 @@
 #' @title Plot transport offer
+#' @name plot_trips
 #'
 #' @description Plot transport offer
 #'

@@ -1,4 +1,5 @@
 #' @title Add a trip to the GTFS
+#' @name add_trip
 #'
 #' @description add a trip
 #'
@@ -9,10 +10,10 @@
 #' @export
 #'
 #' @examples
-#' add_trips(route_id = 1,
+#' add_trip(route_id = 1,
 #'           service_id = 1)
-add_trips <- function(route_id,
-                      service_id) {
+add_trip <- function(route_id,
+                     service_id) {
 
   trips <- as.data.frame(globalenv()$trips)
 

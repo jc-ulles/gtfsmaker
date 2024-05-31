@@ -1,4 +1,5 @@
 #' @title Add trip information to the GTFS
+#' @name add_stop_time
 #'
 #' @description add trip information (time, stop, sequence) to stop_times
 #'
@@ -11,14 +12,14 @@
 #' @export
 #'
 #' @examples
-#'add_stop_times(trip_id = 1,
-#'               time = "05:00:00",
-#'               stop_id = 1,
-#'               sequence = 1)
-add_stop_times <- function(trip_id,
-                           time,
-                           stop_id,
-                           sequence) {
+#'add_stop_time(trip_id = 1,
+#'              time = "05:00:00",
+#'              stop_id = 1,
+#'              sequence = 1)
+add_stop_time <- function(trip_id,
+                          time,
+                          stop_id,
+                          sequence) {
 
   stop_times <- globalenv()$stop_times
   trips <- globalenv()$trips

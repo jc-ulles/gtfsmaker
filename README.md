@@ -28,10 +28,10 @@ devtools::install_github("jc-ulles/gtfsmaker")
 ## How the GTFS works
 
 GTFS is a format for structuring public transport data. It consists of
-six mandatory files in .txt format (agency, stops, stop_times, trips,
-routes, calendar). They are linked together by identification keys
-(route_id, trip_id, service_id, stop_id). Please visit
-<https://gtfs.org> for information.
+six mandatory files in .txt format (`agency`, `stops`, `stop_times`,
+`trips`, `routes`, `calendar`). They are linked together by
+identification keys (route_id, trip_id, service_id, stop_id). Please
+visit <https://gtfs.org> for information.
 
 <img src='man/figures/id_GTFS.png'/>
 
@@ -51,21 +51,21 @@ add_agency(name = "Transport Montpellier TAM",
            timezone = "Europe/Paris")
 
 # Add some stops with location
-add_stops(lat = 43.59690,
-          lon = 3.86357,
-          name = "Parc Montcalm")
+add_stop(lat = 43.59690,
+         lon = 3.86357,
+         name = "Parc Montcalm")
 
-add_stops(lat = 43.60524,
-          lon = 3.88039,
-          name = "Gare Saint-Roch")
+add_stop(lat = 43.60524,
+         lon = 3.88039,
+         name = "Gare Saint-Roch")
 
-add_stops(lat = 43.62695,
-          lon = 3.86584,
-          name = "Saint-Eloi")
+add_stop(lat = 43.62695,
+         lon = 3.86584,
+         name = "Saint-Eloi")
 
-add_stops(lat = 43.63946,
-          lon = 3.87340,
-          name = "Zoo Lunaret")
+add_stop(lat = 43.63946,
+         lon = 3.87340,
+         name = "Zoo Lunaret")
 
 # Add a new route: long name and mode of transport (0 is for the tram)
 add_route(name = "Montcalm - Lunaret",
@@ -73,30 +73,30 @@ add_route(name = "Montcalm - Lunaret",
 
 # Add a new trip belonging to a route (1 is for the route_id created when the route
 # was added previously)
-add_trips(route_id = 1,
-          service_id = 1)
+add_trip(route_id = 1,
+         service_id = 1)
 
 # Add some transport services corresponding to a trip (trip_id), a timetable, a stop
 # (stop_id) and the order of progression in the sequence
-add_stop_times(trip_id = 1,
-               time = "05:00:00",
-               stop_id = 1,
-               sequence = 1)
+add_stop_time(trip_id = 1,
+              time = "05:00:00",
+              stop_id = 1,
+              sequence = 1)
 
-add_stop_times(trip_id = 1,
-               time = "05:08:00",
-               stop_id = 2,
-               sequence = 2)
+add_stop_time(trip_id = 1,
+              time = "05:08:00",
+              stop_id = 2,
+              sequence = 2)
 
-add_stop_times(trip_id = 1,
-               time = "05:17:00",
-               stop_id = 3,
-               sequence = 3)
+add_stop_time(trip_id = 1,
+              time = "05:17:00",
+              stop_id = 3,
+              sequence = 3)
 
-add_stop_times(trip_id = 1,
-               time = "05:23:00",
-               stop_id = 4,
-               sequence = 4)
+add_stop_time(trip_id = 1,
+              time = "05:23:00",
+              stop_id = 4,
+              sequence = 4)
 
 # Repeat the sequence of the selected transport service (trip_id) up to a maximum time,
 # following a defined time step (in minutes)
@@ -118,7 +118,7 @@ add_calendar(service_id = 1,
              end_date = 20241231)
 ```
 
-Plot the transport offer with `plot_trips`:
+Plot the transport offer with `plot_trips()`:
 
 ``` r
 plot_trips(service_id = 1)
@@ -126,7 +126,7 @@ plot_trips(service_id = 1)
 
 <img src='man/figures/plot_example.png'/>
 
-Plot the leaflet map of a selected route with `plot_map`:
+Plot the leaflet map of a selected route with `plot_map()`:
 
 ``` r
 plot_map(route_id = 1)
@@ -134,7 +134,7 @@ plot_map(route_id = 1)
 
 <img src='man/figures/Leaflet_example.png'/>
 
-Save the new GTFS with `gtfs_save`:
+Save the new GTFS with `gtfs_save()`:
 
 ``` r
 gtfs_save(filename = "C:/...")

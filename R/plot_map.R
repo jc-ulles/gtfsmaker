@@ -1,4 +1,5 @@
 #' @title Plot a map
+#' @name plot_map
 #'
 #' @param route_id Identification of the route
 #'
