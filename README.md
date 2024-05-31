@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gtfsmaker
+# gtfsmaker <img src="man/figures/logo.png" align="right" width="138"/>
 
 <!-- badges: start -->
 
