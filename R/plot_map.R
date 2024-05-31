@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' plot_map(1)
+#' plot_map(route_id = 1)
 #' }
 plot_map <- function(route_id) {
 
@@ -23,7 +23,7 @@ plot_map <- function(route_id) {
   select <- route_id
 
   select_stop_times <- trips %>%
-    inner_join(routes, by = "route_id") %>%
+    inner_join(routes,by = "route_id") %>%
     inner_join(stop_times, by = "trip_id") %>%
     filter(route_id == select, trip_id == 1) %>%
     inner_join(stops, by = "stop_id")
@@ -40,11 +40,15 @@ plot_map <- function(route_id) {
 
   map <- leaflet(select_stop_times) %>%
     addTiles() %>%
-    addCircles(popup = ~stop_name) %>%
     addPolylines(data = line,
-                 color = "blue",
-                 weight = 2,
-                 popup = ~route_long_name)
+                 color = "red",
+                 weight = 3,
+                 opacity = 1,
+                 popup = ~route_long_name) %>%
+    addCircles(popup = ~stop_name,
+               radius = 30,
+               fillOpacity = 1,
+               opacity = 1)
 
   return(map)
 }

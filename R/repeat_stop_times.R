@@ -10,8 +10,12 @@
 #' @export
 #'
 #' @examples
-#' repeat_stop_times(1, "23:00:00", 7)
-repeat_stop_times <- function(trip_id, max_time, breaks) {
+#'repeat_stop_times(trip_id = 1,
+#'                  max_time = "20:00:00",
+#'                  breaks = 10)
+repeat_stop_times <- function(trip_id,
+                              max_time,
+                              breaks) {
 
   stop_times <- as.data.frame(globalenv()$stop_times)
   trips <- as.data.frame(globalenv()$trips)
@@ -19,17 +23,18 @@ repeat_stop_times <- function(trip_id, max_time, breaks) {
   trip_number <- trip_id
 
   if(nrow(stop_times) == 0) {
-    message("Error")
+    message("Error: No information exists in stop_times")
     return(invisible())
   }
 
   nouveau_df <- stop_times %>%
     filter(trip_id == trip_number & stop_sequence == 1)
 
-  horaire <- as.POSIXct(max_time, format = "%H:%M:%S")
+  horaire <- as.POSIXct(max_time,
+                        format = "%H:%M:%S")
 
   if(horaire < (nouveau_df$arrival_time + (breaks*60))) {
-    message("Horaire maximal inferieur ou egal a l'horaire de reference")
+    message("Error: The max_time is less than or equal to the reference time of the selected trip_id")
     return(invisible())
   }
 
@@ -70,11 +75,15 @@ repeat_stop_times <- function(trip_id, max_time, breaks) {
 
   }
 
-  test <- do.call(rbind, liste_df_modifies)
+  test <- do.call(rbind,
+                  liste_df_modifies)
 
-  test_trips <- do.call(rbind, liste_df_trips)
+  test_trips <- do.call(rbind,
+                        liste_df_trips)
 
-  stop_times <<- rbind(stop_times, test)
+  stop_times <<- rbind(stop_times,
+                       test)
 
-  trips <<- rbind(trips, test_trips)
+  trips <<- rbind(trips,
+                  test_trips)
 }

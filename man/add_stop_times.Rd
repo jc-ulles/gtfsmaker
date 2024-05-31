@@ -22,5 +22,8 @@ Add a new row to the \code{stop_times} object.
 add trip information (time, stop, sequence) to stop_times
 }
 \examples{
-add_stop_times(1, "05:00:00", 1, 1)
+add_stop_times(trip_id = 1,
+              time = "05:00:00",
+              stop_id = 1,
+              sequence = 1)
 }

@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' gtfs_save("C:/...")
+#' gtfs_save(filename = "C:/...")
 #' }
 gtfs_save <- function(filename) {
 
@@ -36,7 +36,7 @@ gtfs_save <- function(filename) {
   colnames(routes_no_quotes) <- gsub('"', '', colnames(routes_no_quotes))
   write.csv(routes_no_quotes, paste0(filename, "/routes.txt"), row.names = FALSE, quote = FALSE)
 
-  # stoptimes
+  # stop_times
   if ("POSIXct" %in% class(stop_times$arrival_time)) {
     stop_times$arrival_time <- format(stop_times$arrival_time, "%H:%M:%S")
   }

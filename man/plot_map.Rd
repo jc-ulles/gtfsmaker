@@ -17,6 +17,6 @@ Plot a map
 }
 \examples{
 \dontrun{
-plot_map(1)
+plot_map(route_id = 1)
 }
 }

@@ -20,8 +20,10 @@
 #' @export
 #'
 #' @examples
-#' add_route("Montcalm - Lunaret", 0)
-add_route <- function(name, type) {
+#' add_route(name = "Montcalm - Lunaret",
+#'           type = 0)
+add_route <- function(name,
+                      type) {
 
   routes <- as.data.frame(globalenv()$routes)
 
@@ -33,8 +35,8 @@ add_route <- function(name, type) {
 
   new_row <- data.frame(route_id = new_route_id,
                         route_long_name = name,
-                        route_type = type
-                        )
+                        route_type = type)
 
-  routes <<- rbind(routes, new_row)
+  routes <<- rbind(routes,
+                   new_row)
 }

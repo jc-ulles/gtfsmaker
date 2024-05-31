@@ -18,18 +18,36 @@
 #' @export
 #'
 #' @examples
-#' add_calendar(1, 1, 1, 1, 1, 1, 1, 1, 20240511, 20241231)
-add_calendar <- function(service_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday, start_date, end_date) {
+#'add_calendar(service_id = 1,
+#'             monday = 1,
+#'             tuesday = 1,
+#'             wednesday = 1,
+#'             thursday = 1,
+#'             friday = 1,
+#'             saturday = 1,
+#'             sunday = 1,
+#'             start_date = 20240511,
+#'             end_date = 20241231)
+add_calendar <- function(service_id,
+                         monday,
+                         tuesday,
+                         wednesday,
+                         thursday,
+                         friday,
+                         saturday,
+                         sunday,
+                         start_date,
+                         end_date) {
 
   trips <- globalenv()$trips
 
   if (!(service_id %in% trips$service_id)) {
-    message("Erreur: service_id '", service_id, "' n'existe pas dans trips$service_id")
+    message("Error: service_id '", service_id, "' doesn't exist in trips$service_id")
     return(invisible())
   }
 
   if (any(!c(monday, tuesday, wednesday, thursday, friday, saturday, sunday) %in% c(0, 1))) {
-    stop("Erreur: Les valeurs des jours doivent etre 0 ou 1.")
+    stop("Error: The values for the days must be 0 or 1")
   }
 
   new_row <- data.frame(service_id = service_id,
@@ -41,8 +59,8 @@ add_calendar <- function(service_id, monday, tuesday, wednesday, thursday, frida
                         saturday = saturday,
                         sunday = sunday,
                         start_date = start_date,
-                        end_date = end_date
-                        )
+                        end_date = end_date)
 
-  calendar <<- rbind(calendar, new_row)
+  calendar <<- rbind(calendar,
+                     new_row)
 }

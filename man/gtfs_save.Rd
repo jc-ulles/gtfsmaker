@@ -17,6 +17,6 @@ Save the .txt files on disk
 }
 \examples{
 \dontrun{
-gtfs_save("C:/...")
+gtfs_save(filename = "C:/...")
 }
 }

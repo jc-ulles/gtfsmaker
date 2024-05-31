@@ -11,7 +11,7 @@
 #' @importFrom dplyr filter select slice summarize %>% pull arrange
 #'
 #' @examples
-#' plot_trips(1)
+#' plot_trips(service_id = 1)
 plot_trips <- function(service_id) {
 
   trips <- as.data.frame(globalenv()$trips)
@@ -22,24 +22,33 @@ plot_trips <- function(service_id) {
   service_number <- service_id
 
   if (!("stop_id" %in% colnames(stop_times))) {
-    return("fin")
+    message("Error: No column in stop_times is called stop_id")
+    return(invisible())
   }
 
   if (!("stop_id" %in% colnames(stops))) {
-    return("fin")
+    message("Error: No column in stops is called stop_id")
+    return(invisible())
   }
 
   if (!("trip_id" %in% colnames(trips))) {
-    return("fin")
+    message("Error: No column in trips is called trip_id")
+    return(invisible())
   }
 
-  jointure <- merge(stops, stop_times, by = "stop_id")
-  jointure <- merge(jointure, trips, by = "trip_id")
+  jointure <- merge(stops,
+                    stop_times,
+                    by = "stop_id")
+  jointure <- merge(jointure,
+                    trips,
+                    by = "trip_id")
 
   jointure <- jointure %>%
     filter(service_id == service_number)
 
-  trips <- merge(trips, routes, by = "route_id")
+  trips <- merge(trips,
+                 routes,
+                 by = "route_id")
 
   result <- trips %>%
     filter(service_id == service_number) %>%
@@ -52,7 +61,9 @@ plot_trips <- function(service_id) {
     summarize(min_time = min(departure_time, na.rm = TRUE),
               max_time = max(departure_time, na.rm = TRUE))
 
-  time_difference <- difftime(time_range$max_time, time_range$min_time, units = "mins")
+  time_difference <- difftime(time_range$max_time,
+                              time_range$min_time,
+                              units = "mins")
 
   if (time_difference < 60) {
     temps_plot <- "10 mins"
@@ -69,7 +80,8 @@ plot_trips <- function(service_id) {
 
   p <- ggplot() +
     theme_minimal() +
-    scale_x_datetime(date_breaks = temps_plot, date_labels = "%H:%M")
+    scale_x_datetime(date_breaks = temps_plot,
+                     date_labels = "%H:%M")
 
   stop_name_levels <- jointure %>%
     arrange(stop_sequence) %>%
@@ -78,11 +90,14 @@ plot_trips <- function(service_id) {
 
   for (i in 1:length(unique_trip_ids)) {
 
-        trip_data <- subset(jointure, trip_id == unique_trip_ids[i])
+        trip_data <- subset(jointure,
+                            trip_id == unique_trip_ids[i])
 
-    p <- p + geom_point(data = trip_data, aes(x = arrival_time, y = stop_name, group = 1))
+    p <- p + geom_point(data = trip_data,
+                        aes(x = arrival_time, y = stop_name, group = 1))
 
-    p <- p + geom_line(data = trip_data, aes(x = arrival_time, y = stop_name, group = 1))
+    p <- p + geom_line(data = trip_data,
+                       aes(x = arrival_time, y = stop_name, group = 1))
   }
 
   p <- p +

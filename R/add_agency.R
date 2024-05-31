@@ -11,15 +11,19 @@
 #' @export
 #'
 #' @examples
-#' add_agency("TaM Montpellier", "blabla.com", "Paris/Europe")
-add_agency <- function(name, url, timezone) {
+#' add_agency(name = "Transport Montpellier TAM",
+#'            url = "www.tam-voyages.com/",
+#'            timezone = "Europe/Paris")
+add_agency <- function(name,
+                       url,
+                       timezone) {
 
   agency <- globalenv()$agency
 
   new_row <- data.frame(agency_name = name,
                         agency_url = url,
-                        agency_timezone = timezone
-                        )
+                        agency_timezone = timezone)
 
-  agency <<- rbind(agency, new_row)
+  agency <<- rbind(agency,
+                   new_row)
 }

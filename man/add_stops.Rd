@@ -20,5 +20,7 @@ Add a new row to the \code{stops} object.
 add a stop
 }
 \examples{
-add_stops(43.59608069974394, 3.8626826404232526, "Parc Montcalm")
+add_stops(lat = 43.59690,
+         lon = 3.86357,
+         name = "Parc Montcalm")
 }

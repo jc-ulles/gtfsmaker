@@ -33,7 +33,9 @@ devtools::install_github("jc-ulles/gtfsmaker")
 ```
 ## How the GTFS works
 
+GTFS is a format for structuring public transport data. It consists of six mandatory files in .txt format (agency, stops, stop_times, trips, routes, calendar). They are linked together by identification keys (route_id, trip_id, service_id, stop_id). Please visit [https://gtfs.org](https://gtfs.org) for information.
 
+<img src='man/figures/id_GTFS.png'/>
 
 ## Example
 
@@ -77,7 +79,8 @@ add_route(name = "Montcalm - Lunaret",
 
 # Add a new trip belonging to a route (1 is for the route_id created when the route
 # was added previously)
-add_trips(route_id = 1)
+add_trips(route_id = 1,
+          service_id = 1)
 
 # Add some transport services corresponding to a trip (trip_id), a timetable, a stop
 # (stop_id) and the order of progression in the sequence
@@ -121,15 +124,23 @@ add_calendar(service_id = 1,
              end_date = 20241231)
 ```
 
-Finally, plot the transport offer:
+Plot the transport offer with `plot_trips`:
 ```{r, eval = FALSE}
 plot_trips(service_id = 1)
 ```
 
 <img src='man/figures/plot_example.png'/>
 
-Plot the leaflet map of a selected route:
+
+Plot the leaflet map of a selected route with `plot_map`:
 ```{r, eval = FALSE}
 plot_map(route_id = 1)
 ```
 
+<img src='man/figures/Leaflet_example.png'/>
+
+
+Save the new GTFS with `gtfs_save`:
+```{r, eval = FALSE}
+gtfs_save(filename = "C:/...")
+```

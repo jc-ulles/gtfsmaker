@@ -45,5 +45,14 @@ Add a new row to the \code{Calendar} object corresponding to the new calendar's 
 Add calendar information (number of the service concerned, every day of the week, service start and end dates).
 }
 \examples{
-add_calendar(1, 1, 1, 1, 1, 1, 1, 1, 20240511, 20241231)
+add_calendar(service_id = 1,
+            monday = 1,
+            tuesday = 1,
+            wednesday = 1,
+            thursday = 1,
+            friday = 1,
+            saturday = 1,
+            sunday = 1,
+            start_date = 20240511,
+            end_date = 20241231)
 }

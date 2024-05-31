@@ -4,7 +4,7 @@
 \alias{add_trips}
 \title{Add a trip to the GTFS}
 \usage{
-add_trips(route_id)
+add_trips(route_id, service_id)
 }
 \arguments{
 \item{route_id}{identification number of the route concerned}
@@ -16,5 +16,6 @@ Add a new row to the \code{trips} object.
 add a trip
 }
 \examples{
-add_trips(1)
+add_trips(route_id = 1
+          service_id = 1)
 }

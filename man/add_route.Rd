@@ -30,5 +30,6 @@ Add a new row to the \code{Routes} object corresponding to the new routes's info
 Add a new route
 }
 \examples{
-add_route("Montcalm - Lunaret", 0)
+add_route(name = "Montcalm - Lunaret",
+          type = 0)
 }

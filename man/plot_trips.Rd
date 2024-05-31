@@ -16,5 +16,5 @@ Create a graph of the transport offer
 Plot transport offer
 }
 \examples{
-plot_trips(1)
+plot_trips(service_id = 1)
 }

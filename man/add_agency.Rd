@@ -20,5 +20,7 @@ Adds a new row to the \code{Agency} object corresponding to the new agency's inf
 Add agency information (name, URL, time zone).
 }
 \examples{
-add_agency("TaM Montpellier", "blabla.com", "Paris/Europe")
+add_agency(name = "Transport Montpellier TAM",
+           url = "www.tam-voyages.com/",
+           timezone = "Europe/Paris")
 }

@@ -20,5 +20,7 @@ Add new rows to the \code{stop_times} object.
 Repeat a sequence of journeys for other times according to a specific frequency
 }
 \examples{
-repeat_stop_times(1, "23:00:00", 7)
+repeat_stop_times(trip_id = 1,
+                 max_time = "20:00:00",
+                 breaks = 10)
 }

@@ -8,39 +8,51 @@
 #' @examples
 #' gtfs_files()
 gtfs_files <- function() {
+
+  # agency
   agency <- data.frame(agency_name = character(),
                        agency_url = character(),
-                       agency_timezone = character()
-  )
-  assign("agency", agency, envir = .GlobalEnv)
+                       agency_timezone = character())
+  assign("agency",
+         agency,
+         envir = .GlobalEnv)
 
+  # stops
   stops <- data.frame(stop_id = character(),
                       stop_lat = character(),
                       stop_lon = character(),
-                      stop_name = character()
-  )
-  assign("stops", stops, envir = .GlobalEnv)
+                      stop_name = character())
+  assign("stops",
+         stops,
+         envir = .GlobalEnv)
 
+  # routes
   routes <- data.frame(route_id = character(),
                        route_long_name = character(),
-                       route_type = character()
-  )
-  assign("routes", routes, envir = .GlobalEnv)
+                       route_type = character())
+  assign("routes",
+         routes,
+         envir = .GlobalEnv)
 
+  # trips
   trips <- data.frame(route_id = character(),
                       service_id = character(),
-                      trip_id = character()
-  )
-  assign("trips", trips, envir = .GlobalEnv)
+                      trip_id = character())
+  assign("trips",
+         trips,
+         envir = .GlobalEnv)
 
+  # stop_times
   stop_times <- data.frame(trip_id = character(),
                            arrival_time = character(),
                            departure_time = character(),
                            stop_id = character(),
-                           stop_sequence = character()
-  )
-  assign("stop_times", stop_times, envir = .GlobalEnv)
+                           stop_sequence = character())
+  assign("stop_times",
+         stop_times,
+         envir = .GlobalEnv)
 
+  # calendar
   calendar <- data.frame(service_id = character(),
                          monday = character(),
                          tuesday = character(),
@@ -50,7 +62,8 @@ gtfs_files <- function() {
                          saturday = character(),
                          sunday = character(),
                          start_date = character(),
-                         end_date = character()
-  )
-  assign("calendar", calendar, envir = .GlobalEnv)
+                         end_date = character())
+  assign("calendar",
+         calendar,
+         envir = .GlobalEnv)
 }

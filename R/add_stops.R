@@ -10,8 +10,12 @@
 #' @export
 #'
 #' @examples
-#' add_stops(43.59608069974394, 3.8626826404232526, "Parc Montcalm")
-add_stops <- function(lat, lon, name) {
+#'add_stops(lat = 43.59690,
+#'          lon = 3.86357,
+#'          name = "Parc Montcalm")
+add_stops <- function(lat,
+                      lon,
+                      name) {
 
   stops <- as.data.frame(globalenv()$stops)
 
@@ -24,9 +28,9 @@ add_stops <- function(lat, lon, name) {
     new_row <- data.frame(stop_id = new_stop_id,
                           stop_lat = lat,
                           stop_lon = lon,
-                          stop_name = name
-                          )
+                          stop_name = name)
 
-    stops <<- rbind(stops, new_row)
+    stops <<- rbind(stops,
+                    new_row)
 }
 

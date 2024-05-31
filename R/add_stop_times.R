@@ -11,8 +11,14 @@
 #' @export
 #'
 #' @examples
-#' add_stop_times(1, "05:00:00", 1, 1)
-add_stop_times <- function(trip_id, time, stop_id, sequence) {
+#'add_stop_times(trip_id = 1,
+#'               time = "05:00:00",
+#'               stop_id = 1,
+#'               sequence = 1)
+add_stop_times <- function(trip_id,
+                           time,
+                           stop_id,
+                           sequence) {
 
   stop_times <- globalenv()$stop_times
   trips <- globalenv()$trips
@@ -21,12 +27,12 @@ add_stop_times <- function(trip_id, time, stop_id, sequence) {
   trip_number <- trip_id
 
   if (!(trip_id %in% trips$trip_id)) {
-    message("Erreur: trip_id '", trip_id, "' n'existe pas dans trips$trip_id")
+    message("Error: trip_id '", trip_id, "' doesn't exist in trips$trip_id")
     return(invisible())
   }
 
   if (!(stop_id %in% stops$stop_id)) {
-    message("Erreur: stop_id '", stop_id, "' n'existe pas dans stops$stop_id")
+    message("Error: stop_id '", stop_id, "' doesn't exist in stops$stop_id")
     return(invisible())
   }
 
@@ -34,7 +40,7 @@ add_stop_times <- function(trip_id, time, stop_id, sequence) {
     filter(trip_id == trip_number)
 
   if (sequence %in% if_test$stop_sequence) {
-    message("Erreur: stop_sequence '", sequence, "' existe deja dans stop_times$stop_sequence")
+    message("Error: stop_sequence '", sequence, "' already exists in stop_times$stop_sequence")
     return(invisible())
   }
 
@@ -42,11 +48,14 @@ add_stop_times <- function(trip_id, time, stop_id, sequence) {
                         arrival_time = time,
                         departure_time = time,
                         stop_id = stop_id,
-                        stop_sequence = sequence
-                        )
+                        stop_sequence = sequence)
 
-  new_row$arrival_time <- as.POSIXct(new_row$arrival_time, format = "%H:%M:%S")
-  new_row$departure_time <- as.POSIXct(new_row$departure_time, format = "%H:%M:%S")
+  new_row$arrival_time <- as.POSIXct(new_row$arrival_time,
+                                     format = "%H:%M:%S")
 
-  stop_times <<- rbind(stop_times, new_row)
+  new_row$departure_time <- as.POSIXct(new_row$departure_time,
+                                       format = "%H:%M:%S")
+
+  stop_times <<- rbind(stop_times,
+                       new_row)
 }
