@@ -30,10 +30,10 @@ devtools::install_github("jc-ulles/gtfsmaker")
 GTFS is a format for structuring public transport data. It consists of
 six mandatory files in .txt format (`agency`, `stops`, `stop_times`,
 `trips`, `routes`, `calendar`). They are linked together by
-identification keys (route_id, trip_id, service_id, stop_id). Please
-visit <https://gtfs.org> for information.
+identification keys (`route_id`, `trip_id`, `service_id`, `stop_id`).
+Please visit <https://gtfs.org> for information.
 
-<img src='man/figures/id_GTFS.png'/>
+<img src='man/figures/id_GTFS.png' width="700"/>
 
 ## Example
 
@@ -121,7 +121,9 @@ add_calendar(service_id = 1,
 Plot the transport offer with `plot_trips()`:
 
 ``` r
-plot_trips(service_id = 1)
+plot_trips(route_id = 1,
+           size_point = 1,
+           size_line = 0.5)
 ```
 
 <img src='man/figures/plot_example.png'/>

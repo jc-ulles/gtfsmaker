@@ -4,10 +4,14 @@
 \alias{plot_trips}
 \title{Plot transport offer}
 \usage{
-plot_trips(service_id)
+plot_trips(route_id, size_point, size_line)
 }
 \arguments{
-\item{service_id}{identification number of the service concerned}
+\item{route_id}{identification number of the route concerned}
+
+\item{size_point}{numerical value of the point size}
+
+\item{size_line}{numerical value of the line size}
 }
 \value{
 Create a graph of the transport offer
@@ -16,5 +20,7 @@ Create a graph of the transport offer
 Plot transport offer
 }
 \examples{
-plot_trips(service_id = 1)
+plot_trips(route_id = 1,
+size_point = 1.4,
+size_line = 0.8)
 }
